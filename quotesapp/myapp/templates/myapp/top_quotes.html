@@ -5,6 +5,7 @@
 	<title>Top Quotes</title>
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -29,7 +30,7 @@
 			{% for quote in quotes %}
 			<li>
 				<p><strong>“{{ quote.text }}”</strong></p>
-				<p><em>Источник:</em> {{ quote.source }}</p>
+				<p>Источник: {{ quote.source }}</p>
 				<p>Лайки: {{ quote.likes }} | Дизлайки: {{ quote.dislikes }}</p>
 				<p>Рейтинг: {{ quote.rating }}</p>
 				<p>Просмотры: {{ quote.views }}</p>
