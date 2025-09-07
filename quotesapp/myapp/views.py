@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.db.models import F, ExpressionWrapper, IntegerField
 from .models import Quote
 import random
 
@@ -31,5 +32,19 @@ def vote_quote(request, quote_id):
 
 
 def top_quotes(request):
-    quotes = Quote.objects.order_by('-likes')[:10]  # топ 10 по лайкам
-    return render(request, 'myapp/top_quotes.html', {'quotes': quotes})
+    sort = request.GET.get("sort", "likes")
+
+    quotes = Quote.objects.annotate(
+        rating=ExpressionWrapper(F("likes") - F("dislikes"), output_field=IntegerField())
+    )
+
+    if sort == "likes":
+        quotes = quotes.order_by("-likes")[:10]
+    elif sort == "rating":
+        quotes = quotes.order_by("-rating")[:10]
+    elif sort == "views":
+        quotes = quotes.order_by("-views")[:10]
+    else:
+        quotes = quotes.order_by("-likes")[:10]
+
+    return render(request, "myapp/top_quotes.html", {"quotes": quotes, "sort": sort})

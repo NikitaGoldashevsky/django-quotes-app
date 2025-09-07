@@ -8,18 +8,31 @@
 </head>
 
 <body>
-	<h1>Топ 10 цитат</h1>
+	<h1>Топ-10 цитат</h1>
+
+	<div class="sort-buttons">
+		<a href="?sort=likes">
+			<button class="{% if sort == 'likes' %}active{% endif %}">👍 По лайкам</button>
+		</a>
+		<a href="?sort=rating">
+			<button class="{% if sort == 'rating' %}active{% endif %}">⚖️ По рейтингу</button>
+		</a>
+		<a href="?sort=views">
+			<button class="{% if sort == 'views' %}active{% endif %}">👀 По просмотрам</button>
+		</a>
+	</div>
+
 
 	<div class="top-quotes-container">
 		{% if quotes %}
 		<ol>
 			{% for quote in quotes %}
 			<li>
-				<p><strong>Текст:</strong> {{ quote.text }}</p>
-				<p><strong>Источник:</strong> {{ quote.source }}</p>
-				<p><strong>Лайки:</strong> {{ quote.likes }}</p>
-				<p><strong>Дизлайки:</strong> {{ quote.dislikes }}</p>
-				<p><strong>Просмотры:</strong> {{ quote.views }}</p>
+				<p><strong>“{{ quote.text }}”</strong></p>
+				<p><em>Источник:</em> {{ quote.source }}</p>
+				<p>Лайки: {{ quote.likes }} | Дизлайки: {{ quote.dislikes }}</p>
+				<p>Рейтинг: {{ quote.rating }}</p>
+				<p>Просмотры: {{ quote.views }}</p>
 			</li>
 			{% endfor %}
 		</ol>

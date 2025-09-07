@@ -142,3 +142,63 @@ h1 {
 	color: #34495e;
 	margin-bottom: 25px !important;
 }
+
+.sort-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+
+.sort-buttons a button {
+	background-color: #bdc3c7;
+	border: none;
+	padding: 8px 14px;
+	margin: 0 5px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: background-color 0.3s;
+}
+
+.sort-buttons a button:hover {
+	background-color: #95a5a6;
+}
+
+.sort-buttons a button.active {
+	background-color: #3498db;
+	color: white;
+}
+
+.sort-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.sort-buttons a button {
+	background-color: #bdc3c7;
+	border: none;
+	padding: 10px 18px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: 500;
+	transition: background-color 0.3s, transform 0.15s;
+}
+
+.sort-buttons a button:hover {
+	background-color: #95a5a6;
+	transform: scale(1.05);
+}
+
+.sort-buttons a button:active {
+	transform: scale(0.95);
+}
+
+.sort-buttons a button.active {
+	background-color: #3498db;
+	color: white;
+}
