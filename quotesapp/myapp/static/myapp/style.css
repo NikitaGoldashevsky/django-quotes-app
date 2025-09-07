@@ -1,7 +1,6 @@
 body {
 	font-family: Arial, sans-serif;
 	background-color: #f0f8ff;
-	/* мягкий голубой фон */
 	color: #333;
 	margin: 0;
 	padding: 0 20px;
@@ -92,9 +91,19 @@ ol li {
 	max-width: 600px;
 }
 
-.random-quote-container p {
-	font-size: 20px;
-	margin: 12px 0;
+.quote-text {
+	font-size: 34px;
+	font-style: italic;
+	color: #34495e;
+	margin-bottom: 15px;
+	opacity: 0;
+	transform: scale(0.95);
+	transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.quote-text.show {
+	opacity: 1;
+	transform: scale(1);
 }
 
 h1 {
