@@ -9,6 +9,13 @@
 </head>
 
 <body>
+
+	<div class="navbar">
+		<a href="{% url 'random_quote' %}">Главная</a>
+		<a href="{% url 'top_quotes' %}">Топ цитат</a>
+		<a href="{% url 'dashboard' %}">Дашборд</a>
+	</div>
+	
 	<h1>Топ-10 цитат</h1>
 
 	<div class="sort-buttons">
