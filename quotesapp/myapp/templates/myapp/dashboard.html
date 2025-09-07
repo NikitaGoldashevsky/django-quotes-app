@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<h1>Панель метрик цитат</h1>
+
+	<div class="dashboard-container">
+		<div class="card">
+			<h2>Всего цитат</h2>
+			<p>{{ total_quotes }}</p>
+		</div>
+		<div class="card">
+			<h2>Всего лайков</h2>
+			<p>{{ total_likes }}</p>
+		</div>
+		<div class="card">
+			<h2>Всего дизлайков</h2>
+			<p>{{ total_dislikes }}</p>
+		</div>
+		<div class="card">
+			<h2>Всего просмотров</h2>
+			<p>{{ total_views }}</p>
+		</div>
+		<div class="card">
+			<h2>Популярный источник</h2>
+			<p>{{ top_source }}</p>
+		</div>
+	</div>
+</body>
+
+</html>

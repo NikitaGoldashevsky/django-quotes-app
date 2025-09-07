@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.db.models import F, ExpressionWrapper, IntegerField
+from django.db.models import F, ExpressionWrapper, IntegerField, Sum, Count, F
 from .models import Quote
 import random
 
@@ -48,3 +48,25 @@ def top_quotes(request):
         quotes = quotes.order_by("-likes")[:10]
 
     return render(request, "myapp/top_quotes.html", {"quotes": quotes, "sort": sort})
+
+
+def dashboard_view(request):
+    total_quotes = Quote.objects.count()
+    total_likes = Quote.objects.aggregate(Sum('likes'))['likes__sum'] or 0
+    total_dislikes = Quote.objects.aggregate(Sum('dislikes'))['dislikes__sum'] or 0
+    total_views = Quote.objects.aggregate(Sum('views'))['views__sum'] or 0
+
+    top_source = Quote.objects.annotate(rating=F('likes')-F('dislikes')) \
+                              .values('source') \
+                              .annotate(total_rating=Sum('rating')) \
+                              .order_by('-total_rating') \
+                              .first()
+
+    context = {
+        'total_quotes': total_quotes,
+        'total_likes': total_likes,
+        'total_dislikes': total_dislikes,
+        'total_views': total_views,
+        'top_source': top_source['source'] if top_source else '—',
+    }
+    return render(request, 'myapp/dashboard.html', context)
