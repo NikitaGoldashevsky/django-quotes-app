@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Quote
 import random
+
 
 def random_quote(request):
     quotes = list(Quote.objects.all())
@@ -15,3 +16,20 @@ def random_quote(request):
         quote = None
 
     return render(request, 'myapp/random_quote.html', {'quote': quote})
+
+
+def vote_quote(request, quote_id):
+    quote = get_object_or_404(Quote, id=quote_id)
+    if request.method == "POST":
+        vote_type = request.POST.get("vote")
+        if vote_type == "like":
+            quote.likes += 1
+        elif vote_type == "dislike":
+            quote.dislikes += 1
+        quote.save()
+    return redirect('random_quote')
+
+
+def top_quotes(request):
+    quotes = Quote.objects.order_by('-likes')[:10]  # топ 10 по лайкам
+    return render(request, 'myapp/top_quotes.html', {'quotes': quotes})

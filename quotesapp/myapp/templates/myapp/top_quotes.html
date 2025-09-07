@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Top Quotes</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+</head>
+
+<body>
+	<h1>Топ 10 цитат</h1>
+
+	<div class="top-quotes-container">
+		{% if quotes %}
+		<ol>
+			{% for quote in quotes %}
+			<li>
+				<p><strong>Текст:</strong> {{ quote.text }}</p>
+				<p><strong>Источник:</strong> {{ quote.source }}</p>
+				<p><strong>Лайки:</strong> {{ quote.likes }}</p>
+				<p><strong>Дизлайки:</strong> {{ quote.dislikes }}</p>
+				<p><strong>Просмотры:</strong> {{ quote.views }}</p>
+			</li>
+			{% endfor %}
+		</ol>
+		{% else %}
+		<p>Цитат пока нет.</p>
+		{% endif %}
+	</div>
+
+</body>
+
+</html>

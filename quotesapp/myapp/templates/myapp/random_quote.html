@@ -3,20 +3,30 @@
 
 <head>
 	<title>Random Quote</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
 </head>
 
 <body>
 	<h1>Случайная цитата</h1>
 
-	{% if quote %}
-	<p><strong>Text:</strong> {{ quote.text }}</p>
-	<p><strong>Source:</strong> {{ quote.source }}</p>
-	<p><strong>Views:</strong> {{ quote.views }}</p>
-	<p><strong>Likes:</strong> {{ quote.likes }}</p>
-	<p><strong>Dislikes:</strong> {{ quote.dislikes }}</p>
-	{% else %}
-	<p>Цитат пока нет.</p>
-	{% endif %}
+	<div class="random-quote-container">
+		{% if quote %}
+		<p class="quote-text">“{{ quote.text }}”</p>
+		<p><strong>Источник:</strong> {{ quote.source }}</p>
+		<p><strong>Просмотры:</strong> {{ quote.views }}</p>
+
+		<form action="{% url 'vote_quote' quote.id %}" method="post">
+			{% csrf_token %}
+			<button type="submit" name="vote" value="like" class="like-btn">❤️ {{ quote.likes }}</button>
+			<button type="submit" name="vote" value="dislike" class="dislike-btn">👎 {{ quote.dislikes }}</button>
+		</form>
+
+		{% else %}
+		<p>Цитат пока нет.</p>
+		{% endif %}
+	</div>
+
 </body>
 
 </html>

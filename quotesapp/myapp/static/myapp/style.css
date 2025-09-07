@@ -1,0 +1,135 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f0f8ff;
+	/* мягкий голубой фон */
+	color: #333;
+	margin: 0;
+	padding: 0 20px;
+}
+
+h1 {
+	text-align: center;
+	color: #2c3e50;
+}
+
+p {
+	font-size: 18px;
+	margin: 5px 0;
+}
+
+button {
+	padding: 8px 12px;
+	margin: 5px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: #3498db;
+	color: white;
+	font-size: 16px;
+}
+
+button:hover {
+	background-color: #2980b9;
+}
+
+button.like-btn {
+	padding: 10px 18px;
+	margin: 8px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	background-color: #7ed6a5;
+	color: #fff;
+	font-size: 16px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.3s, transform 0.2s;
+}
+
+button.like-btn:hover {
+	background-color: #2ecc71;
+	transform: scale(1.05);
+}
+
+button.dislike-btn {
+	padding: 10px 18px;
+	margin: 8px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	background-color: #ff7f7f;
+	color: #fff;
+	font-size: 16px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.3s, transform 0.2s;
+}
+
+button.dislike-btn:hover {
+	background-color: #e74c3c;
+	transform: scale(1.05);
+}
+
+
+ol li {
+	background-color: #ffffff;
+	padding: 10px;
+	margin: 8px 0;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.random-quote-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 50vh;
+	text-align: center;
+	background-color: #ffffff;
+	padding: 30px 20px;
+	margin: 40px auto;
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	max-width: 600px;
+}
+
+.random-quote-container p {
+	font-size: 20px;
+	margin: 12px 0;
+}
+
+h1 {
+	text-align: center;
+	color: #2c3e50;
+	margin-top: 30px;
+}
+
+.top-quotes-container {
+	max-width: 800px;
+	margin: 30px auto;
+	padding: 20px;
+}
+
+.top-quotes-container ol {
+	padding-left: 0;
+}
+
+.top-quotes-container li {
+	list-style: none;
+	background-color: #ffffff;
+	margin: 12px 0;
+	padding: 15px 20px;
+	border-radius: 10px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.top-quotes-container p {
+	margin: 5px 0;
+	font-size: 18px;
+}
+
+.quote-text {
+	font-size: 30px !important;
+	font-style: italic;
+	color: #34495e;
+	margin-bottom: 25px !important;
+}
